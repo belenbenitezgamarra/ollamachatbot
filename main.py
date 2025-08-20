@@ -149,8 +149,12 @@ if user_input := st.chat_input("¿Cómo puedo ayudarte?"):
             result, metricas = medir_metricas(user_input)
             st.markdown(result)
 
+            # Mostrar métricas
+            st.markdown("### 📊 Métricas desta respuesta")
+            st.json(metricas)
 
     st.session_state.messages.append({"role": "assistant", "content": result})
 
     # Actualizar contexto
     st.session_state.context += f"You: {user_input}\nBot: {result}\n"
+
